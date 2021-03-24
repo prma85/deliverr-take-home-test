@@ -1,0 +1,42 @@
+.order-summary {
+}
+
+.item-row {
+  display: flex;
+}
+
+.item-row > div {
+  margin: 5px 0;
+}
+
+.item-row:last-child {
+  padding-bottom: 10px;
+  border-bottom: 1px solid lightgrey;
+}
+
+.item-name {
+  flex: 2;
+  font-weight: 600;
+}
+.item-quantity {
+  flex: 1;
+}
+
+.item-price {
+  flex: 1;
+}
+
+.order-total {
+  margin: 15px 0;
+  text-align: right;
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+.actions button {
+  width: 100%;
+}
+
+.actions .cancel-order {
+  font-size: 1em;
+}

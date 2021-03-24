@@ -49,17 +49,12 @@ export default class App extends React.Component<{}, AppState> {
     });
   }
 
-  placeOrder(order: Order, inventoryUsed: Inventory) {
-    let { orders, currentID, inventory } = this.state;
+  placeOrder(order: Order, newInventory: Inventory) {
+    let { orders, currentID } = this.state;
     orders[currentID] = order;
     currentID++;
 
-    const keys = Object.keys(inventoryUsed);
-    keys.forEach((key) => {
-      inventory[key] = inventory[key] - inventoryUsed[key];
-    });
-
-    this.setState({ orders, currentID, inventory });
+    this.setState({ orders, currentID, inventory: newInventory });
   }
 
   setOrderAsPickedUp(orderID: number) {
@@ -79,7 +74,7 @@ export default class App extends React.Component<{}, AppState> {
     return (
       <div className="app">
         <Loading isLoading={this.state.isLoading}>
-          <Home toogleBtn={toogleBtn}>
+          <Home title={this.state.activeView} toogleBtn={toogleBtn}>
             {
               // If to replace the use of the react-router
               this.state.activeView === "Client" ? (

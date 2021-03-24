@@ -1,12 +1,12 @@
 import React from "react";
-import MenuItem from "../../components/MenuItem";
+import { MenuItem, OrderSummary } from "../../components";
 import { Inventory, Menu, Order } from "../../models";
 import "./index.css";
 
 interface ClientProps {
   menu: Array<Menu>;
   inventory: Inventory;
-  placeOrder: (order: Order) => void;
+  placeOrder: (order: Order, newInventory: Inventory) => void;
 }
 
 const Client: React.FC<ClientProps> = ({ inventory, menu, placeOrder }) => {
@@ -52,6 +52,23 @@ const Client: React.FC<ClientProps> = ({ inventory, menu, placeOrder }) => {
     return;
   };
 
+  const resetState = () => {
+    setState({
+      desc: {},
+      status: "open",
+      total: 0.0
+    });
+  };
+
+  const handlePlaceOrder = () => {
+    resetState();
+    placeOrder(state, localInventory);
+  };
+  const handleCancelOrder = () => {
+    resetState();
+    setLocalInventory(inventory);
+  };
+
   return (
     <div className="client-page">
       <div className="menu-list">
@@ -74,7 +91,13 @@ const Client: React.FC<ClientProps> = ({ inventory, menu, placeOrder }) => {
           })}
         </div>
       </div>
-      <div className="my-order">xdvdvxdvxdv xdvdvxdvxdvxdv d</div>
+      <div className="my-order">
+        <OrderSummary
+          data={state}
+          placeOrder={handlePlaceOrder}
+          cancelOrder={handleCancelOrder}
+        />
+      </div>
     </div>
   );
 };

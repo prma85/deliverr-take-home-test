@@ -3,9 +3,10 @@ import "./index.css";
 
 interface HomeProps {
   toogleBtn: React.ReactChild;
+  title: string;
 }
 
-const Home: React.FC<HomeProps> = ({ toogleBtn, children }) => {
+const Home: React.FC<HomeProps> = ({ title, toogleBtn, children }) => {
   return (
     <div className="wrapper">
       <nav className="navbar" id="header">
@@ -24,6 +25,7 @@ const Home: React.FC<HomeProps> = ({ toogleBtn, children }) => {
             />
           </a>
           <div className="navbar-collapse">
+            <div className="navbar-nav title">{title} view</div>
             <div className="navbar-nav ml-auto">{toogleBtn}</div>
           </div>
         </div>

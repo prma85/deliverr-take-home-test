@@ -31,6 +31,11 @@ body {
   margin-left: auto !important;
 }
 
+.mrl-auto {
+  margin: 0 auto !important;
+  display: block !important;
+}
+
 .btn {
   display: inline-block;
   font-weight: 400;
@@ -56,16 +61,33 @@ body {
 
   border-width: 1px;
 }
+.btn.place-order {
+  color: #fff !important;
+  background-color: var(--teal) !important;
+  border-color: var(--teal) !important;
+}
+
+.btn.link {
+  border: none;
+}
+
 .btn:hover {
   color: #fff !important;
   background-color: var(--orange) !important;
   border-color: var(--orange) !important;
 }
 
+.link:hover {
+  border: none;
+  color: var(--orangehover) !important;
+  background-color: transparent !important;
+}
+
 .btn:disabled {
   color: var(--dark) !important;
   background-color: var(--light-gray) !important;
   border-color: var(--light-gray) !important;
+  cursor: default;
 }
 
 .toogle-view {
@@ -73,4 +95,13 @@ body {
   font-size: 0.9rem;
   line-height: 1.5;
   border-radius: 0.15rem;
+}
+
+.card {
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 2px 2px 5px #c3c2bb47;
+  border: 1px solid #efece3;
+  padding: 12px;
+  min-height: 200px;
 }

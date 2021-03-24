@@ -18,7 +18,7 @@ const MenuItem: React.FC<MenuItemProps> = ({
   const className = isDisabled ? "disabled " : "";
   const btnText = isDisabled ? "Out of stock" : "Add to order";
   return (
-    <div className="menu-item">
+    <div className="menu-item card">
       <div className="menu-img">
         <img
           alt={`generic burguer ${id}`}

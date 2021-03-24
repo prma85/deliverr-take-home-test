@@ -11,6 +11,7 @@ nav#header {
   position: sticky;
   top: 0;
   background-color: white;
+  margin-bottom: 10px;
 }
 
 .navbar > .container-fluid {
@@ -22,6 +23,13 @@ nav#header {
   align-items: center;
   -ms-flex-pack: justify;
   justify-content: space-between;
+}
+
+.navbar .title {
+  padding-top: 30px;
+  margin-left: -20px;
+  color: #fe5c65;
+  font-size: 1.1em;
 }
 
 .navbar-brand {
