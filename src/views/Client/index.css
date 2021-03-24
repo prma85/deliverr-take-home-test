@@ -1,0 +1,18 @@
+.client-page,
+.menu-items {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.menu-list {
+  flex: 3;
+  margin-right: 20px;
+}
+
+.menu-items {
+  align-content: center;
+}
+
+.my-order {
+  flex: 1;
+}
