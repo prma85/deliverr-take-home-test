@@ -3,7 +3,7 @@ import { render, unmountComponentAtNode } from "react-dom";
 import { act } from "react-dom/test-utils";
 import App from "./App";
 
-let container = null;
+let container: any = null;
 
 const data = {
   inventory: {
@@ -72,17 +72,20 @@ describe("Test main application", () => {
   });
 
   it("renders with initial data", async () => {
-    act(() => {
-      render(<App />, container);
-    });
     jest.spyOn(global, "fetch").mockImplementation(() =>
       Promise.resolve({
         json: () => Promise.resolve(data)
       })
     );
+
+    act(() => {
+      render(<App />, container);
+    });
+
     expect(container.querySelector(".loading-container")).toBeTruthy();
 
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    await new Promise((resolve) => setTimeout(resolve, 1500));
+
     expect(container.querySelector(".loading-container")).toBeFalsy();
     expect(container.textContent).toContain("Client view");
 

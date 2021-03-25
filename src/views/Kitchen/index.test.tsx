@@ -4,7 +4,7 @@ import { act } from "react-dom/test-utils";
 import Kitchen from "./index";
 import { Order } from "../../models";
 
-let container = null;
+let container: any = null;
 
 const propsMock = {
   orders: [

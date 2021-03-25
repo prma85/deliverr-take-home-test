@@ -19,7 +19,10 @@ const ShowOrderItem: React.FC<ShowOrderProps> = ({ order, pickOrderUp }) => {
       ))}
       <div className="order-total">Total: ${order.total}</div>
       {order.status === "open" && pickOrderUp ? (
-        <button className="btn secondary" onClick={() => pickOrderUp(order.id as number)}>
+        <button
+          className="btn secondary"
+          onClick={() => pickOrderUp(order.id as number)}
+        >
           Picked-Up
         </button>
       ) : (

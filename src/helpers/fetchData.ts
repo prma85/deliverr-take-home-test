@@ -1,4 +1,8 @@
-type FetchData  = (url: string, callback?: (d: any) => void, timer?: number) => Promise<any>
+type FetchData = (
+  url: string,
+  callback?: (data: any) => void,
+  timer?: number
+) => Promise<any>;
 
 const fetchData: FetchData = async (url, callback = undefined, timer = 1000) =>
   await fetch(url)

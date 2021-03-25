@@ -4,9 +4,11 @@ import { act } from "react-dom/test-utils";
 import { Inventory } from "../../models";
 import Client from "./index";
 
-let container = null;
-const sleep = async (timer) =>
+let container: any = null;
+
+const sleep = async (timer: number) =>
   new Promise((resolve) => setTimeout(resolve, timer));
+
 const data = {
   inventory: {
     bread: 40,

@@ -44,7 +44,7 @@ const data = {
   ]
 };
 
-const sleep = async (timer) =>
+const sleep = async (timer: number) =>
   new Promise((resolve) => setTimeout(resolve, timer));
 
 describe("Test helpers", () => {

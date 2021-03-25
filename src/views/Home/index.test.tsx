@@ -3,7 +3,7 @@ import { render, unmountComponentAtNode } from "react-dom";
 import { act } from "react-dom/test-utils";
 import Home from "./index";
 
-let container = null;
+let container: any = null;
 
 describe("Test Home view", () => {
   beforeEach(() => {

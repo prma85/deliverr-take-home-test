@@ -28,7 +28,8 @@ const Client: React.FC<ClientProps> = ({ inventory, menu, placeOrder }) => {
     // now need to substract the ingredients
     const tempInventory = { ...localInventory };
     ingredients.forEach((ingredient) => {
-      tempInventory[ingredient as IngredientType] -= item.ingredients[ingredient as IngredientType];
+      tempInventory[ingredient as IngredientType] -=
+        item.ingredients[ingredient as IngredientType];
     });
 
     // update the order
@@ -77,7 +78,8 @@ const Client: React.FC<ClientProps> = ({ inventory, menu, placeOrder }) => {
             const ingredients = Object.keys(item.ingredients);
             const isDisabled = ingredients.some(
               (ingredient) =>
-                item.ingredients[ingredient as IngredientType] > localInventory[ingredient as IngredientType]
+                item.ingredients[ingredient as IngredientType] >
+                localInventory[ingredient as IngredientType]
             );
             return (
               <MenuItem
