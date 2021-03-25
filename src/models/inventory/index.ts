@@ -1,8 +1,2 @@
-export default interface Inventory {
-  bread: number;
-  lettuce: number;
-  tomato: number;
-  cheese: number;
-  bacon: number;
-  turkey: number;
-}
+export type IngredientType = 'bread' | 'lettuce' | 'tomato' | 'cheese' | 'bacon' | 'turkey'
+export type Inventory = Record<IngredientType, number>;

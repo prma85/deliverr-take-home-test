@@ -5,8 +5,8 @@ import { Loading } from "./components";
 import { fetchData } from "./helpers";
 import "./styles.css";
 
-export default class App extends React.Component<{}, AppState> {
-  constructor(props) {
+export default class App extends React.Component<any, AppState> {
+  constructor(props: any) {
     super(props);
     this.state = {
       inventory: null,
@@ -41,7 +41,7 @@ export default class App extends React.Component<{}, AppState> {
   }
 
   placeOrder(order: Order, newInventory: Inventory) {
-    const { orders, currentID } = this.state;
+    const { orders = [], currentID } = this.state;
     order.id = currentID;
     const newOrdersList = [...orders, order];
 
@@ -73,7 +73,7 @@ export default class App extends React.Component<{}, AppState> {
           <Home title={this.state.activeView} toogleBtn={toogleBtn}>
             {
               // If to replace the use of the react-router
-              this.state.activeView === "Client" ? (
+              this.state.activeView === "Client" && menu && inventory ? (
                 <Client
                   menu={menu}
                   inventory={inventory}

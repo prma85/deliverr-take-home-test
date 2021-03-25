@@ -5,7 +5,7 @@ export interface OrderDesc {
 }
 
 export default interface Order {
-  desc: Record<number, OrderDesc> | null;
+  desc: Record<number | string, OrderDesc>;
   total: number;
   status: "open" | "picked-up";
   id?: number;
