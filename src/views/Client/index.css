@@ -1,12 +1,19 @@
 .client-page,
 .menu-items {
+  display: -ms-flexbox;
   display: flex;
-  flex-wrap: nowrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
 }
 
 .menu-list {
-  flex: 3;
-  margin-right: 20px;
+  -ms-flex-preferred-size: 72%;
+  flex-basis: 72%;
+  -ms-flex-positive: 3;
+  flex-grow: 3;
+  margin-right: 3%;
+  -ms-flex-direction: row;
+  flex-direction: row;
 }
 
 .menu-items {
@@ -14,5 +21,29 @@
 }
 
 .my-order {
-  flex: 1;
+  -ms-flex-preferred-size: 25%;
+  flex-basis: 25%;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+}
+
+@media only screen and (max-width: 700px) {
+  .menu-list {
+    -ms-flex-preferred-size: 100%;
+    flex-basis: 100%;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+
+    margin-bottom: 20px;
+  }
+  .my-order {
+    -ms-flex-preferred-size: 25%;
+    flex-basis: 25%;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+  }
+
+  .my-order .order-total {
+    padding-right: 15%;
+  }
 }

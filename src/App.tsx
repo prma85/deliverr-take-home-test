@@ -1,5 +1,5 @@
 import React from "react";
-import { AppState, Inventory, Menu, Order } from "./models";
+import { AppState, Inventory, Order } from "./models";
 import { Home, Client, Kitchen } from "./views";
 import { Loading } from "./components";
 import { fetchData } from "./helpers";
@@ -22,13 +22,15 @@ export default class App extends React.Component<{}, AppState> {
   }
 
   componentDidMount() {
-    fetchData("./data.json", (data) => {
-      this.setState({
-        inventory: data.inventory,
-        menu: data.menu,
-        isLoading: false
+    if (!this.state.inventory) {
+      fetchData("./data.json", (data) => {
+        this.setState({
+          inventory: data.inventory,
+          menu: data.menu,
+          isLoading: false
+        });
       });
-    });
+    }
   }
 
   toogleView() {
@@ -39,12 +41,15 @@ export default class App extends React.Component<{}, AppState> {
   }
 
   placeOrder(order: Order, newInventory: Inventory) {
-    let { orders, currentID } = this.state;
+    const { orders, currentID } = this.state;
     order.id = currentID;
-    orders.push(order);
-    currentID++;
+    const newOrdersList = [...orders, order];
 
-    this.setState({ orders, currentID, inventory: newInventory });
+    this.setState({
+      orders: newOrdersList,
+      currentID: currentID + 1,
+      inventory: newInventory
+    });
   }
 
   setOrderAsPickedUp(orderID: number) {

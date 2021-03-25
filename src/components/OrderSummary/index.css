@@ -1,42 +1,39 @@
-.order-summary {
-}
-
-.item-row {
+.order-summary-card .item-row {
   display: flex;
 }
 
-.item-row > div {
+.order-summary-card .item-row > div {
   margin: 5px 0;
 }
 
-.item-row:last-child {
+.order-summary-card .item-row:last-child {
   padding-bottom: 10px;
   border-bottom: 1px solid lightgrey;
 }
 
-.item-name {
+.order-summary-card .item-name {
   flex: 2;
   font-weight: 600;
 }
-.item-quantity {
+.order-summary-card .item-quantity {
   flex: 1;
 }
 
-.item-price {
+.order-summary-card .item-price {
   flex: 1;
 }
 
-.order-total {
+.order-summary-card .order-total {
   margin: 15px 0;
   text-align: right;
   font-weight: bold;
   font-size: 1.2em;
 }
 
-.actions button {
+.order-summary-card .actions button {
   width: 100%;
 }
 
-.actions .cancel-order {
+.order-summary-card .actions .cancel-order {
   font-size: 1em;
 }

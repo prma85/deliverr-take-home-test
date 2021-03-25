@@ -1,3 +1,10 @@
+import React from "react";
+import { render, unmountComponentAtNode } from "react-dom";
+import { act } from "react-dom/test-utils";
+import App from "./App";
+
+let container = null;
+
 const data = {
   inventory: {
     bread: 40,
@@ -43,5 +50,42 @@ const data = {
 };
 
 describe("Test main application", () => {
-  it("renders without crashing", () => {});
+  beforeEach(() => {
+    // setup a DOM element as a render target
+    container = document.createElement("div");
+    document.body.appendChild(container);
+  });
+
+  afterEach(() => {
+    // cleanup on exiting
+    unmountComponentAtNode(container);
+    container.remove();
+    container = null;
+  });
+
+  it("renders without crashing", () => {
+    act(() => {
+      render(<App />, container);
+    });
+
+    expect(container.querySelector(".app")).toBeTruthy();
+  });
+
+  it("renders with initial data", async () => {
+    act(() => {
+      render(<App />, container);
+    });
+    jest.spyOn(global, "fetch").mockImplementation(() =>
+      Promise.resolve({
+        json: () => Promise.resolve(data)
+      })
+    );
+    expect(container.querySelector(".loading-container")).toBeTruthy();
+
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+    expect(container.querySelector(".loading-container")).toBeFalsy();
+    expect(container.textContent).toContain("Client view");
+
+    global.fetch.mockRestore();
+  });
 });

@@ -16,7 +16,7 @@ const OrderSummary: React.FC<OrderSummaryProps> = ({
   const items = data.desc;
   const keys = Object.keys(items);
   return (
-    <div className="card">
+    <div className="order-summary-card card">
       <div className="order-summary">
         {keys.length > 0 ? (
           keys.map((key) => (
@@ -42,7 +42,7 @@ const OrderSummary: React.FC<OrderSummaryProps> = ({
         <button
           onClick={placeOrder}
           disabled={keys.length === 0}
-          className="btn place-order"
+          className="btn secondary place-order"
         >
           Place Order
         </button>

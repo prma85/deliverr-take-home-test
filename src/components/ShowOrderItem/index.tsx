@@ -8,15 +8,14 @@ interface ShowOrderProps {
   pickOrderUp?: (id: number) => void;
 }
 
-const ShowOrder: React.FC<ShowOrderProps> = ({ order, pickOrderUp }) => {
+const ShowOrderItem: React.FC<ShowOrderProps> = ({ order, pickOrderUp }) => {
   const keys = Object.keys(order.desc);
-  console.log(keys);
 
   return (
     <div className={`order-card ${order.status} card`}>
       <div className="order-title">Order #{order.id}</div>
-      {keys.map((key) => (
-        <OrderDesc item={order.desc[key]} />
+      {keys.map((key, index) => (
+        <OrderDesc key={index} item={order.desc[key]} />
       ))}
       <div className="order-total">Total: ${order.total}</div>
       {order.status === "open" && pickOrderUp ? (
@@ -32,4 +31,4 @@ const ShowOrder: React.FC<ShowOrderProps> = ({ order, pickOrderUp }) => {
   );
 };
 
-export default ShowOrder;
+export default ShowOrderItem;

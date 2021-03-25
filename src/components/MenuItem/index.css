@@ -1,7 +1,8 @@
 .menu-item {
   flex: 1;
   text-align: center;
-  margin-right: 15px;
+  margin: 0 8px 12px 8px;
+  max-width: 300px;
 }
 
 .menu-item .menu-img {
@@ -12,4 +13,24 @@
 .menu-item .menu-img img {
   width: 100%;
   height: auto;
+}
+
+@media only screen and (max-width: 600px) {
+  .menu-item h3 {
+    min-height: 50px;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .menu-item {
+    -ms-flex-positive: 0;
+    flex-grow: 0;
+  }
+}
+
+@media only screen and (max-width: 350px) {
+  .menu-item {
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+  }
 }
