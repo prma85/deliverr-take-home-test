@@ -41,7 +41,7 @@ const propsMock = {
   setOrderAsPickedUp: jest.fn((id) => {})
 };
 
-describe("Test main Kitchen view", () => {
+describe("Test Kitchen view", () => {
   beforeEach(() => {
     // setup a DOM element as a render target
     container = document.createElement("div");
