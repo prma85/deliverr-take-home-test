@@ -1,0 +1,17 @@
+.order-card {
+  margin: 8px;
+}
+
+.order-card.card {
+  min-height: 130px;
+}
+
+.order-card .order-title {
+  font-weight: 800;
+  margin-bottom: 15px;
+  font-size: 1.3em;
+}
+
+.order-card .order-total {
+  margin: 15px 0;
+}

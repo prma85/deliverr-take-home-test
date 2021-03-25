@@ -2,7 +2,7 @@ import React from "react";
 import { AppState, Inventory, Menu, Order } from "./models";
 import { Home, Client, Kitchen } from "./views";
 import { Loading } from "./components";
-
+import { fetchData } from "./helpers";
 import "./styles.css";
 
 export default class App extends React.Component<{}, AppState> {
@@ -18,28 +18,17 @@ export default class App extends React.Component<{}, AppState> {
     } as AppState;
     this.placeOrder = this.placeOrder.bind(this);
     this.setOrderAsPickedUp = this.setOrderAsPickedUp.bind(this);
-    this.fetchData = this.fetchData.bind(this);
     this.toogleView = this.toogleView.bind(this);
   }
 
   componentDidMount() {
-    this.fetchData();
-  }
-
-  fetchData() {
-    fetch("./data.json")
-      .then((data) => data.json())
-      .then((data: { inventory: Inventory; menu: Array<Menu> }) => {
-        // setTimeout used to simulate a API request
-        // with 1s to show the loading state
-        setTimeout(() => {
-          this.setState({
-            inventory: data.inventory,
-            menu: data.menu,
-            isLoading: false
-          });
-        }, 1000);
+    fetchData("./data.json", (data) => {
+      this.setState({
+        inventory: data.inventory,
+        menu: data.menu,
+        isLoading: false
       });
+    });
   }
 
   toogleView() {
@@ -51,7 +40,8 @@ export default class App extends React.Component<{}, AppState> {
 
   placeOrder(order: Order, newInventory: Inventory) {
     let { orders, currentID } = this.state;
-    orders[currentID] = order;
+    order.id = currentID;
+    orders.push(order);
     currentID++;
 
     this.setState({ orders, currentID, inventory: newInventory });
@@ -59,7 +49,8 @@ export default class App extends React.Component<{}, AppState> {
 
   setOrderAsPickedUp(orderID: number) {
     let { orders } = this.state;
-    orders[orderID].status = "picked-up";
+    const index = orders.findIndex((order) => order.id === orderID);
+    orders[index].status = "picked-up";
     this.setState({ orders });
   }
 

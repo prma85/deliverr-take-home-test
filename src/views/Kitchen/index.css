@@ -1,0 +1,15 @@
+.kitchen-open-orders,
+.kitchen-picked-up-orders {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.kitchen-page hr {
+  margin: 20px 0;
+  height: 1px;
+  background-color: var(--orange);
+  border: none;
+}

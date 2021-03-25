@@ -61,7 +61,19 @@ body {
 
   border-width: 1px;
 }
-.btn.place-order {
+
+.btn:hover {
+  color: #fff !important;
+  background-color: var(--orange) !important;
+  border-color: var(--orange) !important;
+}
+
+.btn.secondary {
+  color: var(--teal) !important;
+  border-color: var(--teal) !important;
+}
+
+.btn.secondary:hover {
   color: #fff !important;
   background-color: var(--teal) !important;
   border-color: var(--teal) !important;
@@ -69,12 +81,6 @@ body {
 
 .btn.link {
   border: none;
-}
-
-.btn:hover {
-  color: #fff !important;
-  background-color: var(--orange) !important;
-  border-color: var(--orange) !important;
 }
 
 .link:hover {
